@@ -53,8 +53,7 @@ class Checkbox extends StatefulWidget {
     this.activeColor,
     this.checkColor,
     this.materialTapTargetSize,
-  })  : assert(tristate != null),
-        assert(tristate || value != null),
+  })  : assert(tristate),
         super(key: key);
 
   /// Whether this checkbox is checked.
@@ -336,11 +335,11 @@ class _RenderCheckbox extends RenderToggleable {
 
     final Offset origin =
         offset + (size / 2.0 - const Size.square(_kEdgeSize) / 2.0 as Offset);
-    final AnimationStatus status = position!.status;
+    final AnimationStatus status = position.status;
     final double tNormalized =
         status == AnimationStatus.forward || status == AnimationStatus.completed
-            ? position!.value
-            : 1.0 - position!.value;
+            ? position.value
+            : 1.0 - position.value;
 
     // Four cases: false to null, false to true, null to false, true to false
     if (_oldValue == false || value == false) {
